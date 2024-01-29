@@ -1,0 +1,24 @@
+
+.imgbox {
+    height: 300px;
+    width: 200px;
+}
+
+.paragraphalign {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#gameInfoBox {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.h2 {
+    margin-bottom: 10px;
+    color: brown
+}

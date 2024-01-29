@@ -1,0 +1,19 @@
+#gamesDataContainer {
+  display: flex;
+  background: linear-gradient(to bottom, #3455db, #87CEEB);
+  margin: 0px;
+  padding: 0px;
+}
+
+ .GamesDataMainContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+   }
+
+.GamesDataMainContainer > * {
+ margin-bottom: 15px; 
+  border: 3px solid black;
+  box-shadow: 4px 4px 4px 4px black;
+   width: 270px;
+}

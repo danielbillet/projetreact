@@ -1,0 +1,11 @@
+.panierRender {
+    margin-right: 20px; 
+    padding-right: 20px; 
+    max-height: 100px;
+    max-width: 100px;
+}
+
+.prixTotalPanier {
+    width: 100%;
+    border: 15px solid red
+}
