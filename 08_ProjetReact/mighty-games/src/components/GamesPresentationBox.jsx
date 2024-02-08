@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styles from './GamesPresentationBox.module.css'
+import { useCart } from './CartContext';
 
 
 
@@ -7,13 +8,15 @@ import styles from './GamesPresentationBox.module.css'
 export default function GamesPresentationBox(props) {
   const { nomJeu, imgJeu, genreJeu, plateformeJeu, prixJeu, stock} = props;
   const [gameStock, setGameStock] = useState(stock)
- 
-  const updateStock = () => {
+  const { ajouterAuPanier, updateStock } = useCart()
+
+  const handleUpdateStock = () => {
 
     if (gameStock > 0) {
       const updatedStock = gameStock - 1
       setGameStock(updatedStock)
-      props.ajouterAuPanier({
+      updateStock(nomJeu, updatedStock)
+      ajouterAuPanier({
         nomJeu,
         quantite: 1,
         prixJeu
@@ -38,7 +41,7 @@ export default function GamesPresentationBox(props) {
         ) : (
           <p><b>Plus de stock disponible</b></p>
         )}
-        <button onClick={updateStock}>Ajouter au panier</button>
+        <button onClick={handleUpdateStock}>Ajouter au panier</button>
       </div>
     </div>
   )

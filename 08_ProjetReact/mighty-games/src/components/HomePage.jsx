@@ -2,16 +2,16 @@ import React from 'react'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import {Main} from './Main'
-import {Link , Outlet} from "react-router-dom"
+import NavBar from './NavBar'
+
+
 
 
 
 export const HomePage = () => {
   return (
     <>
-    <Link to="/">Home Page</Link>
-    <Link to="/Panier">Mon Panier</Link>
-      <Outlet/>
+        <NavBar/>
         <Header />
         <Main/>
         <Footer />

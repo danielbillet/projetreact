@@ -1,35 +1,23 @@
 import React, { useState } from 'react'
 import GamesPresentationBox from './GamesPresentationBox'
-import {Panier} from './Panier'
 import styles from './GamesData.module.css'
 import gamesData from './GamesData'
 import style from "./Panier.module.css"
+import { PanierPage } from './PanierPage'
+import { useCart } from './CartContext'
+
+
 
  export const Main = () =>{
-  const [panier, setPanier] = useState([]);
+
+  const {cartState, dispatch} = useCart()
 
   const ajouterAuPanier = (jeu) => {
-    const existingGameIndex = panier.findIndex((item) => item.nomJeu === jeu.nomJeu);
+    dispatch({type: 'ADD_TO_CART', payload: jeu})
+  }
 
-    if (existingGameIndex !== -1) {
-      const updatedPanier = [...panier]
-      updatedPanier[existingGameIndex].quantite += 1
-      setPanier(updatedPanier)
-    } 
-    else {
-      setPanier([...panier, { ...jeu, quantite: 1 }])
-    }
-  };
   const calculerPrixTotal = () => {
-    let prixTotal = 0
-
-    for (const jeu of panier) {
-      prixTotal += jeu.prixJeu * jeu.quantite;
-    }
-
-    return prixTotal.toFixed(2)
-
-
+    return cartState.total.toFixed(2)
   }
 
   return (
@@ -44,8 +32,8 @@ import style from "./Panier.module.css"
         ))}
       </div>
       <div className={style.panierRender}>
-      <Panier panier={panier} calculerPrixTotal={calculerPrixTotal}/>
-      </div>
+      <PanierPage panier={cartState.items} calculerPrixTotal={calculerPrixTotal}/>
+      </div> 
     </div>
   )
 }
